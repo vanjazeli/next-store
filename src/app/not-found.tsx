@@ -1,6 +1,7 @@
 import { APP_NAME } from '@/lib/constants';
 import Image from 'next/image';
-import { LinkButton } from '@/components/ui/button-link';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
@@ -9,7 +10,9 @@ export default function NotFound() {
       <div className="rounded-lg p-6 text-center">
         <h1 className="mb-4 text-3xl font-bold">404 Page not found</h1>
         <p className="mb-4 text-destructive">Could not find the requested page</p>
-        <LinkButton href="/">Homepage</LinkButton>
+        <Button asChild>
+          <Link href="/">Homepage</Link>
+        </Button>
       </div>
     </div>
   );
