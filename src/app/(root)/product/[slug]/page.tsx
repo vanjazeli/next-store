@@ -20,12 +20,12 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
 
   return (
     <section>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+      <div className="grid grid-cols-1 gap-y-4 md:grid-cols-5 md:gap-x-4 md:gap-y-0">
         <div className="col-span-2">
           <ProductImages images={product.images} />
         </div>
         <div className="col-span-2">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 md:gap-6">
             <p>
               {product.brand} {product.category}
             </p>
