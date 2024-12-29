@@ -15,3 +15,8 @@ export const insertProductSchema = z.object({
   banner: z.string().nullable(),
   price: currency,
 });
+
+export const signInSchema = z.object({
+  email: z.string().email('Please enter a valid email address.').min(1, { message: 'This field is required.' }),
+  password: z.string().min(1, { message: 'This field is required.' }),
+});
