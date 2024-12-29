@@ -12,9 +12,9 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="w-full max-w-sm overflow-hidden">
-      <CardHeader className="items-center p-0">
-        <Link href={`${productUrl}/${product.slug}`}>
-          <Image src={product.images[0]} alt={product.name} height={300} width={300} priority />
+      <CardHeader className="aspect-square items-center p-0">
+        <Link className="h-full w-full object-cover" href={`${productUrl}/${product.slug}`}>
+          <Image className="h-full w-full object-cover" src={product.images[0]} alt={product.name} height={300} width={300} priority />
         </Link>
       </CardHeader>
       <CardContent className="grid gap-4 p-4">

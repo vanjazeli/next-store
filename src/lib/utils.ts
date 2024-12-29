@@ -14,3 +14,10 @@ export function formatNumberWithDecimal(num: number): string {
 
   return decimal ? `${int}.${decimal.padEnd(2, '0')}` : `${int}.00`;
 }
+
+export function toOrdinal(num: number): string {
+  const suffixes = ['th', 'st', 'nd', 'rd'];
+  const value = num % 100;
+
+  return num + (suffixes[(value - 20) % 10] || suffixes[value] || suffixes[0]);
+}

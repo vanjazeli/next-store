@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Image from 'next/image';
 import { CarouselApi } from '@/components/ui/carousel';
 import { useEffect, useState } from 'react';
+import { toOrdinal } from '@/lib/utils';
 
 type ProductImagesProps = {
   images: Array<string>;
@@ -11,7 +12,7 @@ type ProductImagesProps = {
 
 export default function ProductImages({ images }: ProductImagesProps) {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(1);
+  const [current, setCurrent] = useState('');
 
   const imagesLen = images.length;
 
@@ -20,10 +21,10 @@ export default function ProductImages({ images }: ProductImagesProps) {
       return;
     }
 
-    setCurrent(api.selectedScrollSnap() + 1);
+    setCurrent(toOrdinal(api.selectedScrollSnap() + 1));
 
     api.on('select', () => {
-      setCurrent(api.selectedScrollSnap() + 1);
+      setCurrent(toOrdinal(api.selectedScrollSnap() + 1));
     });
   }, [api]);
 
@@ -42,8 +43,8 @@ export default function ProductImages({ images }: ProductImagesProps) {
         </CarouselContent>
         <div className="mt-4 flex items-center justify-between gap-4">
           <div className="flex gap-4">
-            <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0" />
-            <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0" />
+            <CarouselPrevious aria-label="Previous image" className="relative left-0 top-0 translate-x-0 translate-y-0" />
+            <CarouselNext aria-label="Next image" className="relative left-0 top-0 translate-x-0 translate-y-0" />
           </div>
           <p>
             {current} out of {imagesLen} images
